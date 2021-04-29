@@ -40,7 +40,7 @@ class block_tb_courses_edit_form extends block_edit_form {
 
         $settingsjson = get_config('block_tb_courses')->settingsjson;
         $resposedata = json_decode(base64_decode($settingsjson));
-        
+
         $availablecourseslist = array();
         $attributes = array();
         foreach ($resposedata->data->courses_settings as $c) {

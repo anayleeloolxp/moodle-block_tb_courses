@@ -81,7 +81,6 @@ class block_tb_courses extends block_base {
             return $this->content;
         }
 
-        
         $this->title = '';
         $this->content = new stdClass();
 
@@ -104,13 +103,12 @@ class block_tb_courses extends block_base {
         global $DB;
         $this->page->requires->js(new moodle_url($CFG->wwwroot . '/blocks/tb_courses/js/jquery.min.js'));
         $this->page->requires->js(new moodle_url($CFG->wwwroot . '/blocks/tb_courses/js/owl.carousel.js'));
-        
+
         $allcourses = get_courses();
         $enrolledcourses = enrol_get_my_courses();
 
-        foreach($resposedata->data->courses_settings as $section){
-
-            if( !empty( $this->config->sections ) ){
+        foreach ($resposedata->data->courses_settings as $section) {
+            if (!empty($this->config->sections)) {
                 if (!in_array($section->courses_settings_id, $this->config->sections)) {
                     continue;
                 }
@@ -122,31 +120,31 @@ class block_tb_courses extends block_base {
             $defaultmaxcourses = $section->defaultmaxcourses;
             $courseimagedefault = $section->courseimagedefault;
             $tbacoursesbgimage = $section->tb_a_courses_bgimage;
-            if( $tbacoursesbgimage == 1 ){
+            if ($tbacoursesbgimage == 1) {
                 $embed = 'embeded';
-            }else{
+            } else {
                 $embed = 'notembeded';
             }
-            
+
             $summarylimit = $section->summary_limit;
             $showteachers = $section->showteachers;
-            if( $showteachers == 0 ){
+            if ($showteachers == 0) {
                 $showteachercss = 'style="display:none;"';
-            }else{
+            } else {
                 $showteachercss = '';
             }
             $progressenabled = $section->progressenabled;
-            if( $progressenabled == 0 ){
+            if ($progressenabled == 0) {
                 $progresscss = 'style="display:none;"';
-            }else{
+            } else {
                 $progresscss = '';
             }
             $coursegridwidth = $section->coursegridwidth;
             $showasslider = $section->showasslider;
             $styleint = $section->style;
-            if( $styleint == 1 ){
+            if ($styleint == 1) {
                 $style = 'dark';
-            }else{
+            } else {
                 $style = 'light';
             }
             $autoslide = $section->autoslide;
@@ -155,56 +153,55 @@ class block_tb_courses extends block_base {
             $sectioncoursestype = $section->section_courses_type;
             $featuredcourses = $section->featured_courses;
 
-
             $categorythispath = '/' . $categoryid . '/';
 
             $courses = array();
 
-            if( $sectioncoursestype == 'available' ){
+            if ($sectioncoursestype == 'available') {
                 $loopcourses = $allcourses;
-            }else if( $sectioncoursestype == 'Completed' ){
+            } else if ($sectioncoursestype == 'Completed') {
                 $loopcourses = $allcourses;
-            }else if( $sectioncoursestype == 'Featured' ){
+            } else if ($sectioncoursestype == 'Featured') {
                 $loopcourses = $allcourses;
-            }else if( $sectioncoursestype == 'inprogress' ){
+            } else if ($sectioncoursestype == 'inprogress') {
                 $loopcourses = $allcourses;
-            }else if( $sectioncoursestype == 'mycourses' ){
+            } else if ($sectioncoursestype == 'mycourses') {
                 $loopcourses = $enrolledcourses;
-            }else if( $sectioncoursestype == 'upcoming' ){
+            } else if ($sectioncoursestype == 'upcoming') {
                 $loopcourses = $enrolledcourses;
             }
 
             foreach ($loopcourses as $courseid => $courseall) {
                 $countc = count($courses);
-                if( $countc >= $defaultmaxcourses ){
+                if ($countc >= $defaultmaxcourses) {
                     continue;
                 }
 
                 $progress = block_tb_courses_progress_percent($courseall);
 
-                if( $sectioncoursestype == 'Completed' && $progress != 100){
+                if ($sectioncoursestype == 'Completed' && $progress != 100) {
                     continue;
                 }
 
-                if ( $sectioncoursestype == 'inprogress' && ($progress == 0 || $progress == 100 || $progress == 101) ) {
+                if ($sectioncoursestype == 'inprogress' && ($progress == 0 || $progress == 100 || $progress == 101)) {
                     continue;
                 }
 
-                if ( $sectioncoursestype == 'upcoming' && $progress != 0) {
+                if ($sectioncoursestype == 'upcoming' && $progress != 0) {
                     continue;
                 }
 
                 $courseall->progress = $progress;
 
                 $category = $DB->get_record('course_categories', array('id' => $courseall->category));
-        
+
                 if ($category) {
                     $path = trim($category->path) . '/';
                 } else {
                     $path = 0;
                 }
-        
-                if( $sectioncoursestype == 'available' ){
+
+                if ($sectioncoursestype == 'available') {
                     if ($categoryid == 0) {
                         if (!array_key_exists($courseid, $enrolledcourses)) {
                             $courses[$courseid] = $courseall;
@@ -214,7 +211,7 @@ class block_tb_courses extends block_base {
                             $courses[$courseid] = $courseall;
                         }
                     }
-                }else if( $sectioncoursestype == 'Completed' || $sectioncoursestype == 'inprogress' ){
+                } else if ($sectioncoursestype == 'Completed' || $sectioncoursestype == 'inprogress') {
                     if ($categoryid == 0) {
                         if (array_key_exists($courseid, $enrolledcourses)) {
                             $courses[$courseid] = $courseall;
@@ -224,12 +221,12 @@ class block_tb_courses extends block_base {
                             $courses[$courseid] = $courseall;
                         }
                     }
-                }else if( $sectioncoursestype == 'Featured' ){
+                } else if ($sectioncoursestype == 'Featured') {
                     $featuredcoursesarr = explode(',', $featuredcourses);
                     if (in_array($courseall->id, $featuredcoursesarr)) {
                         $courses[$courseid] = $courseall;
                     }
-                }else if( $sectioncoursestype == 'mycourses' || $sectioncoursestype == 'upcoming' ){
+                } else if ($sectioncoursestype == 'mycourses' || $sectioncoursestype == 'upcoming') {
                     if ($categoryid == 0) {
                         $courses[$courseid] = $courseall;
                     } else {
@@ -238,32 +235,30 @@ class block_tb_courses extends block_base {
                         }
                     }
                 }
-
             }
 
-            if( !empty($courses) ){
-
-                if( $viewas == 'grid' ){
+            if (!empty($courses)) {
+                if ($viewas == 'grid') {
                     $viewclass = 'grid row-fluid';
-                    $gridclass = 'col-'.$coursegridwidth;
-                }else if( $viewas == 'list' ){
+                    $gridclass = 'col-' . $coursegridwidth;
+                } else if ($viewas == 'list') {
                     $viewclass = 'list row-fluid';
                     $gridclass = 'col-12';
-                }else if( $viewas == 'grid_slider' ){
-                    $viewclass = 'tb_courses_slider_'.$coursessettingsid.' owl-carousel owl-theme';
+                } else if ($viewas == 'grid_slider') {
+                    $viewclass = 'tb_courses_slider_' . $coursessettingsid . ' owl-carousel owl-theme';
                     $gridclass = '';
 
-                    if( $autoslide == 1 ){
+                    if ($autoslide == 1) {
                         $autoslidejs = 'autoplay: true,';
-                    }else{
+                    } else {
                         $autoslidejs = 'autoplay: false,';
                     }
 
-                    $this->page->requires->js_init_code("$('.tb_courses_slider_".$coursessettingsid."').owlCarousel({
+                    $this->page->requires->js_init_code("$('.tb_courses_slider_" . $coursessettingsid . "').owlCarousel({
                         loop: true,
                         margin: 10,
                         responsiveClass: true,
-                        ".$autoslidejs."
+                        " . $autoslidejs . "
                         responsive: {
                             0: {
                                 items: 1,
@@ -287,41 +282,37 @@ class block_tb_courses extends block_base {
                             }
                         }
                     });");
-
                 }
 
                 $html .= '<div class="tb_courses_sectioncontainer">';
-                $html .= '<h5 class="tb_courses_section_title card-title">'.$sectiontitle.'</h5>';
-                $html .= '<div class="tb_courses_section '.$viewclass.'">';
-                foreach($courses as $course){
-                    
+                $html .= '<h5 class="tb_courses_section_title card-title">' . $sectiontitle . '</h5>';
+                $html .= '<div class="tb_courses_section ' . $viewclass . '">';
+                foreach ($courses as $course) {
                     $teachershtml = block_tb_courses_teachers($course);
-                    if( block_tb_course_image($course) ){
+                    if (block_tb_course_image($course)) {
                         $imgurl = block_tb_course_image($course);
-                    }else{
+                    } else {
                         $imgurl = $courseimagedefault;
                     }
-                    
+
                     $coursename = $course->fullname;
                     $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
                     $coursename = format_string(get_course_display_name_for_list($course), true, $course->id);
                     $coursesummary = submarylimit(strip_tags($course->summary), $summarylimit);
-                    
 
-                    $html .= '<div class="tb_course_sin '.$gridclass.' emstyle_'.$embed.' style_'.$style.'" style="background-image: url('.$imgurl.');">
-                    <div class="courseimage"><img src="'.$imgurl.'"/></div>
-                    <div class="courseteacher" '.$showteachercss.' >'.$teachershtml.'</div>
-                    <div class="coursetitle"><a href="'.$courseurl.'">'.$coursename.'</a></div>
-                    <div class="coursedesc">'.$coursesummary.'</div>
-                    <div class="courseprogress" '.$progresscss.'><div class="couresprogressbar" style="width:'.$progress.'%">'.$progress.'%</div></div>
+                    $html .= '<div class="tb_course_sin ' . $gridclass . ' emstyle_' . $embed . ' style_' . $style . '" style="background-image: url(' . $imgurl . ');">
+                    <div class="courseimage"><img src="' . $imgurl . '"/></div>
+                    <div class="courseteacher" ' . $showteachercss . ' >' . $teachershtml . '</div>
+                    <div class="coursetitle"><a href="' . $courseurl . '">' . $coursename . '</a></div>
+                    <div class="coursedesc">' . $coursesummary . '</div>
+                    <div class="courseprogress" ' . $progresscss . '><div class="couresprogressbar" style="width:' . $progress . '%">' . $progress . '%</div></div>
                     </div>';
-
                 }
                 $html .= '</div>';
                 $html .= '</div>';
             }
         }
-        
+
         return $html;
     }
 

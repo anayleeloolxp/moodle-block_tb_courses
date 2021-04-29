@@ -64,9 +64,9 @@ function block_tb_courses_teachers($course) {
     foreach ($teachers as $key => $teacher) {
         $teachername = get_string('defaultcourseteacher') . ': ' . fullname($teacher);
         $teachernames .= html_writer::tag('p', $teachername, array('class' => 'teacher_name'));
-        
-        $user_picture = new user_picture($teacher, array('size' => 50, 'class' => ''));
-        $src = $user_picture->get_url($PAGE);
+
+        $userpicture = new user_picture($teacher, array('size' => 50, 'class' => ''));
+        $src = $userpicture->get_url($PAGE);
         $teacherimages .= html_writer::div('<img src="'.$src.'"/>', 'c_teacher_image');
     }
     $teacherimages .= html_writer::end_div();
