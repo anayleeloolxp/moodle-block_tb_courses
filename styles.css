@@ -2,21 +2,18 @@
     background-image: unset!important;
 }
 .tb_course_sin.emstyle_embeded .courseimage {
-    display: none;
+    /* display: none; */
 }
 .tb_course_sin.emstyle_embeded {
     background-size: cover;
     background-repeat: no-repeat;
 }
-
 .courseprogress {
     background: #ccc;
 }
 .couresprogressbar {
     background: white;
 }
-
-
 .owl-carousel,
 .owl-carousel .owl-item {
     -webkit-tap-highlight-color: transparent;
@@ -132,7 +129,6 @@
 .owl-carousel .fadeOut {
     animation-name: fadeOut;
 }
-
 @keyframes fadeOut {
     0% {
         opacity: 1;
@@ -244,3 +240,243 @@
 .owl-theme .owl-dots .owl-dot:hover span {
     background: #869791;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 29-04-2021 */
+.block_tb_courses .tb_course_sin {
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 2px #e7e7e9;
+    box-shadow: 0 0 2px #e7e7e9;
+    border: 1px solid #e7e7e9;
+    margin: 0 auto;
+    position: relative;
+}
+.block_tb_courses .tb_course_sin .courseimage {
+    position: relative;
+    padding-top: 55%;
+    z-index: inherit;
+}
+.block_tb_courses .tb_course_sin .courseimage img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.tb_course_sin .coursetitle {
+    padding: 30px 25px 10px;
+    text-align: center;
+    overflow: hidden;
+}
+.tb_course_sin .coursetitle a {
+    font-size: 20px;
+    color: #535762 !important;
+    font-weight: 700;
+    font-family: "Nunito Sans",sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    display: block;
+    outline: none !important;
+    box-shadow: none !important;
+    background: none !important;
+    text-decoration: none;
+}
+.tb_course_sin .coursedesc {
+    font-weight: 400;
+    font-size: 16px;
+    padding: 0 25px 10px;
+    color: #535762;
+    min-height: 150px;
+}
+.block_tb_courses .tb_course_sin .courseteacher {
+    position: absolute;
+    z-index: 1;
+    bottom: 225px;
+}
+.block_tb_courses .tb_course_sin .courseteacher .teacher_image_wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+.block_tb_courses .tb_course_sin .courseteacher .teacher_image_wrap .c_teacher_image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #e7e7e9;
+    margin: 2px;
+}
+.teacher_image_wrap .c_teacher_image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.block_tb_courses .tb_course_sin .courseprogress {
+    margin: 0 0 0;
+    position: relative;
+    font-size: 12px;
+    border-radius: 0;
+    overflow: hidden;
+    background: #ddd;
+    border: 2px solid #ddd;
+    width: 100%;
+    max-width: calc(100% - 6px);
+    left: 3px;
+    bottom: 3px;
+} 
+.block_tb_courses .tb_course_sin .courseprogress .couresprogressbar {
+    background: #a7b2da;
+    font-size: 12px;
+    text-indent: 10px;
+    display: inline-grid;
+}
+#page-wrapper #page #page-content section.block .row-fluid {
+    margin: 0 -10px;
+}
+.block_tb_courses .tb_course_sin.col-6 {
+    max-width: calc(50% - 20px);
+    padding: 0;
+}
+.block_tb_courses .tb_course_sin.col-4 {
+    max-width: calc(33.3333333333% - 20px);
+    padding: 0;
+}
+.block_tb_courses .tb_course_sin.col-3 {
+    max-width: calc(25% - 20px);
+    padding: 0;
+}
+.tb_courses_sectioncontainer {
+    margin: 0 0 30px;
+}
+#page-wrapper #page #page-content section.block>div.card-body  h5.card-title {
+    margin: 0 0 10px;
+    color: #535762;
+}
+.tb_courses_section.list .tb_course_sin {
+    margin: 0 0 15px;
+    padding: 0;
+}
+.tb_courses_section.list .tb_course_sin .courseimage {
+    float: left;
+    width: 48%;
+    padding: 0;
+    margin-right: 2%;
+}
+.tb_courses_section.list .tb_course_sin .coursetitle, .tb_courses_section.list .tb_course_sin .coursedesc {
+    width: 50%;
+    float: right;
+    text-align: left;
+}
+.tb_courses_section.list .tb_course_sin .courseprogress {
+    float: right;
+    width: calc(50% - 50px);
+    right: 25px;
+}
+.tb_courses_section.list .tb_course_sin.emstyle_notembeded .courseimage img {
+    position: static;
+}
+.block_tb_courses .tb_course_sin.style_light {
+    background-color: #fff;
+}
+.block_tb_courses .tb_course_sin.style_light .coursetitle a,
+.block_tb_courses .tb_course_sin.style_light .coursedesc {
+    color: #535762 !important;
+}
+.block_tb_courses .tb_course_sin.style_dark {
+    background-color: #535762;
+}
+.block_tb_courses .tb_course_sin.style_dark .coursetitle a,
+.block_tb_courses .tb_course_sin.style_dark .coursedesc {
+    color: #fff !important;
+}
+.block_tb_courses .tb_course_sin.emstyle_embeded {
+    background: none !important;
+}
+.block_tb_courses .tb_course_sin.emstyle_embeded .courseimage {
+    padding-top: 110%;
+    width: auto;
+    float: none;
+    margin: 0;
+}
+.tb_courses_section.list .tb_course_sin.emstyle_embeded .courseimage {
+    padding-top: 45%;
+}
+.block_tb_courses .tb_course_sin.emstyle_embeded .coursetitle {
+    position: absolute;
+    bottom: 180px;
+    width: 100%;
+    left: 0;
+    text-align: center;
+}
+.block_tb_courses .tb_course_sin.emstyle_embeded .coursedesc {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    left: 0;
+    /* text-align: center; */
+}
+.block_tb_courses .list .tb_course_sin.emstyle_embeded .coursedesc {
+    text-align: center;
+}
+.block_tb_courses .tb_course_sin.emstyle_embeded .courseprogress {
+    position: absolute;
+    /* left: 0;
+    width: 100%;
+    bottom: 0; */
+}
+.block_tb_courses .tb_course_sin.emstyle_embeded.style_dark::after {
+    content: "";
+    background-image: linear-gradient(transparent, rgba(0,0,0,.8));
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+.block_tb_courses .tb_course_sin.emstyle_embeded.style_light::after {
+    content: "";
+    background-image: linear-gradient(transparent, rgba(255,255,255,.8));
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+.block_tb_courses .tb_course_sin>div {
+    z-index: 1;
+}
+
+
+
+
+
+@media only screen and (max-width: 1500px) {
+    .tb_course_sin .coursetitle a {
+        font-size: 16px;
+    }
+    .tb_course_sin .coursedesc {
+        font-size: 13px;
+        min-height: 120px;
+    }
+}
+
+/* 29-04-2021 */
