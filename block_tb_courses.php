@@ -159,9 +159,9 @@ class block_tb_courses extends block_base {
 
             if ($sectioncoursestype == 'available') {
                 $loopcourses = $allcourses;
-            } else if ($sectioncoursestype == 'Completed') {
+            } else if ($sectioncoursestype == 'completed') {
                 $loopcourses = $allcourses;
-            } else if ($sectioncoursestype == 'Featured') {
+            } else if ($sectioncoursestype == 'featured') {
                 $loopcourses = $allcourses;
             } else if ($sectioncoursestype == 'inprogress') {
                 $loopcourses = $allcourses;
@@ -179,7 +179,7 @@ class block_tb_courses extends block_base {
 
                 $progress = block_tb_courses_progress_percent($courseall);
 
-                if ($sectioncoursestype == 'Completed' && $progress != 100) {
+                if ($sectioncoursestype == 'completed' && $progress != 100) {
                     continue;
                 }
 
@@ -211,7 +211,7 @@ class block_tb_courses extends block_base {
                             $courses[$courseid] = $courseall;
                         }
                     }
-                } else if ($sectioncoursestype == 'Completed' || $sectioncoursestype == 'inprogress') {
+                } else if ($sectioncoursestype == 'completed' || $sectioncoursestype == 'inprogress') {
                     if ($categoryid == 0) {
                         if (array_key_exists($courseid, $enrolledcourses)) {
                             $courses[$courseid] = $courseall;
@@ -221,7 +221,7 @@ class block_tb_courses extends block_base {
                             $courses[$courseid] = $courseall;
                         }
                     }
-                } else if ($sectioncoursestype == 'Featured') {
+                } else if ($sectioncoursestype == 'featured') {
                     $featuredcoursesarr = explode(',', $featuredcourses);
                     if (in_array($courseall->id, $featuredcoursesarr)) {
                         $courses[$courseid] = $courseall;
