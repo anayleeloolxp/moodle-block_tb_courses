@@ -352,6 +352,10 @@
 #page-wrapper #page #page-content section.block .row-fluid {
     margin: 0 -10px;
 }
+.block_tb_courses .tb_course_sin.col-12 {
+    max-width: calc(100% - 20px);
+    padding: 0;
+}
 .block_tb_courses .tb_course_sin.col-6 {
     max-width: calc(50% - 20px);
     padding: 0;
