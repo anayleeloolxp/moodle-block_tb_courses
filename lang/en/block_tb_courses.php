@@ -24,14 +24,14 @@
  */
 
 $string['nolicense'] = 'Invalid Leeloo LXP License ID';
-$string['pluginname'] = 'Leeloo LXP Courses';
-$string['displayname'] = 'Leeloo LXP Courses';
-$string['blocktitle'] = 'Leeloo LXP Courses';
+$string['pluginname'] = 'Leeloo LXP Courses multi-list slider';
+$string['displayname'] = 'Leeloo LXP Courses multi-list slider';
+$string['blocktitle'] = 'Leeloo LXP Courses multi-list slider';
 $string['license'] = 'Leeloo LXP License ID';
 
 $string['sections'] = 'Select Sections';
 
-$string['tb_courses:addinstance'] = 'Add a new Leeloo LXP Courses block';
-$string['tb_courses:myaddinstance'] = 'Add a new Leeloo LXP Courses block to Dashboard';
+$string['tb_courses:addinstance'] = 'Add a new Leeloo LXP Courses multi-list slider block';
+$string['tb_courses:myaddinstance'] = 'Add a new Leeloo LXP Courses multi-list slider block to Dashboard';
 
-$string['privacy:metadata'] = 'The Leeloo LXP Courses (tb_courses) block only shows information and does not store data itself.';
+$string['privacy:metadata'] = 'The Leeloo LXP Courses multi-list slider (tb_courses) block only shows information and does not store data itself.';
