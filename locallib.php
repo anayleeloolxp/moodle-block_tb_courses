@@ -55,11 +55,12 @@ function block_tb_courses_progress_percent($course) {
  * @return string
  */
 function block_tb_courses_teachers($course) {
-    global $PAGE;
+    global $PAGE, $DB;
     $teacherhtml = '';
     $teacherimages = html_writer::start_div('teacher_image_wrap');
     $teachernames = '';
     $context = context_course::instance($course->id);
+    $role = $DB->get_record('role', array('shortname' => 'editingteacher'));
     $teachers = get_role_users($role->id, $context, false, $fields);
     foreach ($teachers as $key => $teacher) {
         $teachername = get_string('defaultcourseteacher') . ': ' . fullname($teacher);
