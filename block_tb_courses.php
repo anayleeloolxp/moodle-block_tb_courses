@@ -254,7 +254,7 @@ class block_tb_courses extends block_base {
                         $autoslidejs = 'autoplay: false,';
                     }
 
-                    $this->page->requires->js_init_code("$('.tb_courses_slider_" . $coursessettingsid . "').owlCarousel({
+                    $this->page->requires->js_init_code("require(['jquery'],function($) { $('.tb_courses_slider_" . $coursessettingsid . "').owlCarousel({
                         loop: true,
                         margin: 10,
                         responsiveClass: true,
@@ -281,7 +281,7 @@ class block_tb_courses extends block_base {
                                 margin: 20
                             }
                         }
-                    });");
+                    });});");
                 }
 
                 $html .= '<div class="tb_courses_sectioncontainer">';
