@@ -101,7 +101,7 @@ class block_tb_courses extends block_base {
         $html = '';
 
         global $DB;
-        $this->page->requires->js(new moodle_url($CFG->wwwroot . '/blocks/tb_courses/js/jquery.min.js'));
+        $this->page->requires->jquery();
         $this->page->requires->js(new moodle_url($CFG->wwwroot . '/blocks/tb_courses/js/owl.carousel.js'));
 
         $allcourses = get_courses();
