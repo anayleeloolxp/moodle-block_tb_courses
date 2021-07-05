@@ -124,7 +124,7 @@ function submarylimit($coursesummary, $length) {
 /**
  * Fetch and Update Configration From L
  */
-function updateconfcourses() {
+function block_tb_courses_updateconf() {
     if (isset(get_config('block_tb_courses')->license)) {
         $leeloolxplicense = get_config('block_tb_courses')->license;
     } else {
