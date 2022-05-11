@@ -61,7 +61,7 @@ function block_tb_courses_teachers($course) {
     $teachernames = '';
     $context = context_course::instance($course->id);
     $role = $DB->get_record('role', array('shortname' => 'editingteacher'));
-    $teachers = get_role_users($role->id, $context, false, $fields);
+    $teachers = get_role_users($role->id, $context, false);
     foreach ($teachers as $key => $teacher) {
         $teachername = get_string('defaultcourseteacher') . ': ' . fullname($teacher);
         $teachernames .= html_writer::tag('p', $teachername, array('class' => 'teacher_name'));
