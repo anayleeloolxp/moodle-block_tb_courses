@@ -298,7 +298,7 @@ class block_tb_courses extends block_base {
                     $coursename = $course->fullname;
                     $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
                     $coursename = format_string(get_course_display_name_for_list($course), true, $course->id);
-                    $coursesummary = submarylimit(strip_tags($course->summary), $summarylimit);
+                    @$coursesummary = submarylimit(strip_tags($course->summary), $summarylimit);
 
                     $html .= '<div class="tb_course_sin ' . $gridclass . ' emstyle_' . $embed . ' style_' . $style . '" style="background-image: url(' . $imgurl . ');">
                     <div class="courseimage"><img src="' . $imgurl . '"/></div>
