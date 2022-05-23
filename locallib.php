@@ -25,6 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 require_once($CFG->libdir . '/completionlib.php');
+
 use core_completion\progress;
 
 /**
@@ -68,7 +69,7 @@ function block_tb_courses_teachers($course) {
 
         $userpicture = new user_picture($teacher, array('size' => 50, 'class' => ''));
         $src = $userpicture->get_url($PAGE);
-        $teacherimages .= html_writer::div('<img src="'.$src.'"/>', 'c_teacher_image');
+        $teacherimages .= html_writer::div('<img src="' . $src . '"/>', 'c_teacher_image');
     }
     $teacherimages .= html_writer::end_div();
     $teacherhtml .= $teacherimages;
@@ -89,9 +90,12 @@ function block_tb_course_image($course) {
     if ($course->id > 0 && $course->get_course_overviewfiles()) {
         foreach ($course->get_course_overviewfiles() as $file) {
             $isimage = $file->is_valid_image();
-            $url = file_encode_url("$CFG->wwwroot/pluginfile.php",
+            $url = file_encode_url(
+                "$CFG->wwwroot/pluginfile.php",
                 '/' . $file->get_contextid() . '/' . $file->get_component() . '/' .
-                $file->get_filearea() . $file->get_filepath() . $file->get_filename(), !$isimage);
+                    $file->get_filearea() . $file->get_filepath() . $file->get_filename(),
+                !$isimage
+            );
             if ($isimage) {
                 return $url;
             } else {
