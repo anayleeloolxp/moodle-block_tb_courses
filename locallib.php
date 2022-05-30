@@ -107,7 +107,7 @@ function block_tb_course_image($course) {
         return '';
     }
     // Where are the default at even?.
-    return print_error('error');
+    return '';
 }
 
 /**
