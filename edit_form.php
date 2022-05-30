@@ -47,7 +47,13 @@ class block_tb_courses_edit_form extends block_edit_form {
             $availablecourseslist[$c->courses_settings_id] = $c->section_title;
         }
 
-        $select = $mform->addElement('select', 'config_sections', get_string('sections', 'block_tb_courses'), $availablecourseslist, $attributes);
+        $select = $mform->addElement(
+            'select',
+            'config_sections',
+            get_string('sections', 'block_tb_courses'),
+            $availablecourseslist,
+            $attributes
+        );
         $select->setMultiple(true);
     }
 }

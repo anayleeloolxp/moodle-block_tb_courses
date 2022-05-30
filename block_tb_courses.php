@@ -254,7 +254,8 @@ class block_tb_courses extends block_base {
                         $autoslidejs = 'autoplay: false,';
                     }
 
-                    $this->page->requires->js_init_code("require(['jquery'],function($) { $('.tb_courses_slider_" . $coursessettingsid . "').owlCarousel({
+                    $this->page->requires->js_init_code("require(['jquery'],function($) {
+                        $('.tb_courses_slider_" . $coursessettingsid . "').owlCarousel({
                         loop: true,
                         margin: 10,
                         responsiveClass: true,
@@ -297,15 +298,21 @@ class block_tb_courses extends block_base {
 
                     $coursename = $course->fullname;
                     $courseurl = new moodle_url('/course/view.php', array('id' => $course->id));
-                    $coursename = format_string(get_course_display_name_for_list($course), true, $course->id);
+                    $coursename = format_string(
+                        get_course_display_name_for_list($course),
+                        true,
+                        $course->id
+                    );
                     @$coursesummary = submarylimit(strip_tags($course->summary), $summarylimit);
 
-                    $html .= '<div class="tb_course_sin ' . $gridclass . ' emstyle_' . $embed . ' style_' . $style . '" style="background-image: url(' . $imgurl . ');">
+                    $html .= '<div class="tb_course_sin ' . $gridclass . ' emstyle_' . $embed . ' style_' . $style . '"
+                    style="background-image: url(' . $imgurl . ');">
                     <div class="courseimage"><img src="' . $imgurl . '"/></div>
                     <div class="courseteacher" ' . $showteachercss . ' >' . $teachershtml . '</div>
                     <div class="coursetitle"><a href="' . $courseurl . '">' . $coursename . '</a></div>
                     <div class="coursedesc">' . $coursesummary . '</div>
-                    <div class="courseprogress" ' . $progresscss . '><div class="couresprogressbar" style="width:' . $progress . '%">' . $progress . '%</div></div>
+                    <div class="courseprogress" ' . $progresscss . '><div class="couresprogressbar"
+                    style="width:' . $progress . '%">' . $progress . '%</div></div>
                     </div>';
                 }
                 $html .= '</div>';

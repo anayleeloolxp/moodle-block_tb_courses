@@ -33,7 +33,7 @@ if ($ADMIN->fulltree) {
         get_string('license', 'block_tb_courses'),
         0
     );
-    //$setting->set_updatedcallback(block_tb_courses_updateconf());
+
     $settings->add($setting);
 
     $setting = new admin_setting_configcourses('block_tb_courses/settingsjson', '', '', '', PARAM_RAW);
