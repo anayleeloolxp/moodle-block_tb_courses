@@ -149,7 +149,13 @@ class block_tb_courses extends block_base {
             }
             $autoslide = $section->autoslide;
             $viewas = $section->view_as;
-            $sectiontitle = $section->section_title;
+
+            $summaryformatoptions = new stdClass();
+            $summaryformatoptions->noclean = false;
+            $summaryformatoptions->overflowdiv = false;
+            $summaryformatoptions->filter = true;
+
+            $sectiontitle = format_text($section->section_title, 1, $summaryformatoptions);
             $sectioncoursestype = $section->section_courses_type;
             $featuredcourses = $section->featured_courses;
 
